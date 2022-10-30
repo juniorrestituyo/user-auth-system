@@ -1,3 +1,5 @@
+from multiprocessing import context
+import profile
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -42,7 +44,11 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def logged(request):
-    return render(request, 'logged.html')
+    profile = request.user.profile
+    context = {
+        'profile': profile
+    }
+    return render(request, 'logged.html', context)
 
 
 def signup(request):
