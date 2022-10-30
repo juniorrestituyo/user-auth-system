@@ -38,10 +38,7 @@ def logoutUser(request):
 
 
 def logged(request):
-    page = 'logged'
-
-    context = {'page': page}
-    return render(request, 'index.html', context)
+    return render(request, 'logged.html')
 
 
 def signup(request):
