@@ -35,7 +35,7 @@
 				</div>
 
 				{% if page == "signup" %}
-				<form method="POST" class="login100-form validate-form">
+				<form method="POST" action="{% url 'signup' %}" class="login100-form validate-form">
 					{% csrf_token %}
 					<span class="login100-form-title">
 						Sign Up
@@ -46,6 +46,10 @@
 						{{field}}
 						<span class="focus-input100"></span>
 					</div>
+
+					{% for error in field.errors %}
+						<span style="color: red;">{{error}}</span>
+            		{% endfor %}
 					{% endfor %}
 					
 					<div class="container-login100-form-btn">
